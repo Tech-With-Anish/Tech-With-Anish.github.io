@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Stockfish Chess</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="game-area" aria-label="Chess game">
+        <div class="top-bar">
+          <div>
+            <p class="eyebrow">Human vs AI</p>
+            <h1>Stockfish Chess</h1>
+          </div>
+          <div class="turn-pill" id="turnPill">White to move</div>
+        </div>
+
+        <div class="board-wrap">
+          <div class="rank-files files-top" aria-hidden="true">
+            <span>a</span><span>b</span><span>c</span><span>d</span><span>e</span><span>f</span><span>g</span><span>h</span>
+          </div>
+          <div class="board-frame">
+            <div class="rank-files ranks-left" aria-hidden="true">
+              <span>8</span><span>7</span><span>6</span><span>5</span><span>4</span><span>3</span><span>2</span><span>1</span>
+            </div>
+            <div id="board" class="board" role="grid" aria-label="Chess board"></div>
+            <div class="rank-files ranks-right" aria-hidden="true">
+              <span>8</span><span>7</span><span>6</span><span>5</span><span>4</span><span>3</span><span>2</span><span>1</span>
+            </div>
+          </div>
+          <div class="rank-files files-bottom" aria-hidden="true">
+            <span>a</span><span>b</span><span>c</span><span>d</span><span>e</span><span>f</span><span>g</span><span>h</span>
+          </div>
+        </div>
+      </section>
+
+      <aside class="side-panel" aria-label="Game controls">
+        <section class="panel-section status-section">
+          <p class="section-label">Position</p>
+          <h2 id="statusText">Your move as White.</h2>
+          <p id="detailText">Select a white piece, then choose one of its highlighted legal moves.</p>
+        </section>
+
+        <section class="panel-section controls">
+          <p class="section-label">AI engine</p>
+          <label for="depthSelect">Stockfish depth</label>
+          <select id="depthSelect">
+            <option value="6">Depth 6 - quick</option>
+            <option value="10" selected>Depth 10 - strong</option>
+            <option value="14">Depth 14 - stronger</option>
+          </select>
+          <p id="engineStatus" class="engine-status">Starting Stockfish...</p>
+          <div class="button-row">
+            <button id="newGameBtn" type="button">New game</button>
+            <button id="undoBtn" type="button">Undo</button>
+          </div>
+        </section>
+
+        <section class="panel-section captures">
+          <p class="section-label">Captured</p>
+          <div class="capture-row">
+            <span>White</span>
+            <div id="whiteCaptured" class="captured-list" aria-label="White captured pieces"></div>
+          </div>
+          <div class="capture-row">
+            <span>Black</span>
+            <div id="blackCaptured" class="captured-list" aria-label="Black captured pieces"></div>
+          </div>
+        </section>
+
+        <section class="panel-section move-log-section">
+          <p class="section-label">Moves</p>
+          <ol id="moveLog" class="move-log" aria-live="polite"></ol>
+        </section>
+      </aside>
+    </main>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>
